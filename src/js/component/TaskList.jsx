@@ -9,10 +9,14 @@ export const TaskList = () => {
 		<>
 			<ul className="task-list">
 				{tasks.map(task => (
-					<Task key={task[0]} task={task} />
+					<Task key={task.id} task={task} />
 				))}
 			</ul>
-			<span>{tasks.length} items left</span>
+			<span className="muted-text">
+				{`${
+					tasks.filter(task => task.completed === !true).length
+				} items left`}
+			</span>
 		</>
 	);
 };

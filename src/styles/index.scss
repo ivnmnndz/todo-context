@@ -1,32 +1,32 @@
 @import "~bootstrap/scss/bootstrap.scss";
+
 body {
   width: 100%;
-  height: 100vh;
-  background: linear-gradient(to right, #40a08a 0%, #497be8 100%);
+  background-color: #40a08a;
 }
 #app {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fff;
-  max-width: 400px;
+  background: white;
+  max-width: 375px;
   margin: 120px auto;
   padding: 25px;
   border-radius: 5px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
 }
 input {
-  width: 100%;
+  width: 80%;
   outline: 0;
   border-width: 0 0 4px;
   border-color: #497be8;
-  border-style: dotted;
+  border-style: solid;
   margin-bottom: 5px;
   transition-duration: 0.4s;
-
   &:focus {
-    border-color: #40a08a;
+    border-color: #7E47F5;
     &::placeholder {
       color: transparent;
     }
@@ -34,23 +34,50 @@ input {
 }
 button {
   background-color: white;
+  margin-right: 3px;
   color: black;
-  border: 2px solid #4caf50;
-  border-radius: 12px;
+  border-radius: 50%;
+  border: none;
   text-align: center;
   text-decoration: none;
   transition-duration: 0.4s;
+  &:hover {
+    background-color: #7E47F5;
+    color: white;
+  }
 }
-button:hover {
-  background-color: #4caf50;
-  color: white;
+.task-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
 .task-list {
+  width: 90%;
   list-style-type: none;
   padding: 5px;
+  .task-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 5px;
+    border-bottom: 2px solid black;
+    .task-text-box {
+      flex-direction: column;
+      word-break: break-word;
+      max-width: 70%;
+    }
+    .button-box {
+      align-self: center;
+      span {
+        margin-right: 3px;
+        padding-right: 6px;
+      }
+    }
+  }
 }
-.task-item {
-  padding: 5px;
-  margin: 5px;
-  border: 1px solid black;
+.muted-text {
+  font-size: 10px;
+  opacity: 75%;
 }

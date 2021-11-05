@@ -8,8 +8,20 @@ export default (state, action) => {
 			return {
 				tasks: state.tasks.filter(task => task.id !== action.payload)
 			};
-		case "TOGGLE_STATUS":
-			return {};
+		case "COMPLETE_TASK":
+			return {
+				tasks: state.tasks.map(item => {
+					if (item.id === action.payload) {
+						return {
+							...item,
+							completed: true
+						};
+					} else {
+						return item;
+					}
+				})
+			};
+
 		default:
 			return state;
 	}

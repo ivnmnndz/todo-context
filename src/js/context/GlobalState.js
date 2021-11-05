@@ -4,11 +4,7 @@ import AppReducer from "./AppReducer.js";
 
 // define initial state
 const initialState = {
-	tasks: [
-		{ id: 1, text: "test" },
-		{ id: 2, text: "global" },
-		{ id: 3, text: "state" }
-	]
+	tasks: []
 };
 
 //create context
@@ -31,13 +27,20 @@ export const GlobalProvider = ({ children }) => {
 			payload: id
 		});
 	}
+	function completeTask(id) {
+		dispatch({
+			type: "COMPLETE_TASK",
+			payload: id
+		});
+	}
 
 	return (
 		<GlobalContext.Provider
 			value={{
 				tasks: state.tasks,
 				addTask,
-				deleteTask
+				deleteTask,
+				completeTask
 			}}>
 			{children}
 		</GlobalContext.Provider>

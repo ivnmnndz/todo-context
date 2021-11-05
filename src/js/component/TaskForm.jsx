@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState.js";
 
-export const AddTaskForm = () => {
+export const TaskForm = () => {
 	const [content, setContent] = useState("");
 	const { addTask } = useContext(GlobalContext);
 
@@ -12,24 +12,29 @@ export const AddTaskForm = () => {
 		event.preventDefault();
 		const newTask = {
 			id: newID,
-			text: content.trim()
+			text: content.trim(),
+			completed: false,
+			created: new Date().toLocaleDateString("en-US")
 		};
 		addTask(newTask);
 		setContent("");
 	};
 	return (
-		<div
-			style={{
-				display: "flex"
-			}}>
+		<form className="task-form" onSubmit={onSubmitHandler}>
 			<input
 				placeholder="Add Task"
 				value={content}
 				onChange={event => setContent(event.target.value)}
+				onKeyPress={event => {
+					if (event.key === "Enter") {
+						onSubmitHandler;
+					}
+				}}
+				required
 			/>
-			<button onClick={onSubmitHandler} type="button">
-				+
+			<button type="submit">
+				<i className="far fa-plus-square"></i>
 			</button>
-		</div>
+		</form>
 	);
 };
