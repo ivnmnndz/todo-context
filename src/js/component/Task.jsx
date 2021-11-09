@@ -4,6 +4,7 @@ import { GlobalContext } from "../context/GlobalState";
 
 export const Task = ({ task }) => {
 	const { deleteTask, completeTask } = useContext(GlobalContext);
+
 	return (
 		<li className="task-item">
 			<div className="task-text-box">

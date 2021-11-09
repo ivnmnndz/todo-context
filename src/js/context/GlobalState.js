@@ -9,6 +9,7 @@ const initialState = {
 
 //create context
 export const GlobalContext = createContext(initialState);
+
 //export a provider component to wrap children components
 export const GlobalProvider = ({ children }) => {
 	//create useReducer state
@@ -21,12 +22,14 @@ export const GlobalProvider = ({ children }) => {
 			payload: task
 		});
 	}
+
 	function deleteTask(id) {
 		dispatch({
 			type: "DELETE_TASK",
 			payload: id
 		});
 	}
+
 	function completeTask(id) {
 		dispatch({
 			type: "COMPLETE_TASK",
@@ -46,6 +49,7 @@ export const GlobalProvider = ({ children }) => {
 		</GlobalContext.Provider>
 	);
 };
+
 // validate properties
 GlobalProvider.propTypes = {
 	children: PropTypes.array

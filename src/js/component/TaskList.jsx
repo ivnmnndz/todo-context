@@ -5,6 +5,8 @@ import { Task } from "./Task.jsx";
 export const TaskList = () => {
 	const { tasks } = useContext(GlobalContext);
 
+	const pendingTasks = tasks.filter(task => task.completed === !true);
+
 	return (
 		<>
 			<ul className="task-list">
@@ -13,9 +15,9 @@ export const TaskList = () => {
 				))}
 			</ul>
 			<span className="muted-text">
-				{`${
-					tasks.filter(task => task.completed === !true).length
-				} items left`}
+				{pendingTasks.length == 0
+					? `No tasks, add a task`
+					: `${pendingTasks.length} items left`}
 			</span>
 		</>
 	);

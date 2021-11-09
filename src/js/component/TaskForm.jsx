@@ -3,10 +3,10 @@ import { GlobalContext } from "../context/GlobalState.js";
 
 export const TaskForm = () => {
 	const [content, setContent] = useState("");
+
 	const { addTask } = useContext(GlobalContext);
 
-	const generateRandomID = () => Math.floor(Math.random() * 10000000);
-	const newID = generateRandomID();
+	const newID = Math.floor(Math.random() * 10000000);
 
 	const onSubmitHandler = event => {
 		event.preventDefault();
@@ -19,6 +19,7 @@ export const TaskForm = () => {
 		addTask(newTask);
 		setContent("");
 	};
+
 	return (
 		<form className="task-form" onSubmit={onSubmitHandler}>
 			<input
